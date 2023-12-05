@@ -75,6 +75,3 @@ source /Users/stott/.config/op/plugins.sh
 
 # Set up tool to manage history
 eval "$(mcfly init zsh)"
-
-# Set up easy management of config files - see https://www.atlassian.com/git/tutorials/dotfiles
-alias myconfig='/usr/bin/git --git-dir=/Users/stott/.myconfig/ --work-tree=/Users/stott'

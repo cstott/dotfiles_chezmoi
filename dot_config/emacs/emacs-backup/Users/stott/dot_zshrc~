@@ -43,10 +43,11 @@ setopt CORRECT
 setopt CORRECT_ALL
 
 # Aliases
-alias ls='/bin/ls -Gh'
-alias la='/bin/ls -Ga'
-alias ll='/bin/ls -alFG'
-alias lsd='/bin/ls -Gh -d */'
+alias ls='/opt/homebrew/bin/lsd -Gh'
+alias la='/opt/homebrew/bin/lsd -Ga'
+alias ll='/opt/homebrew/bin/lsd -alFG'
+alias lst='/opt/homebrew/bin/lsd -la -t'
+alias lsd='/opt/homebrew/bin/lsd -Gh -d */'
 alias ps='ps -a'
 
 alias -g reload='source ~/.zshrc'
