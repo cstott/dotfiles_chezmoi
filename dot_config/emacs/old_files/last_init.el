@@ -1,0 +1,201 @@
+;;; Personal Emacs startup file
+;;; - ideas borrowed from other init.el files
+;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Basic settings
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Turn off the welcome screen
+(setq inhibit-splash-screen t)
+
+(setq initial-major-mode 'fundamental-mode)  ; default mode for the *scratch* buffer
+(setq display-time-default-load-average nil) ; this information is useless for most
+
+;; Automatically reread from disk if the underlying file changes
+(setq auto-revert-interval 1)
+(setq auto-revert-check-vc-info t)
+(global-auto-revert-mode)
+
+;; Save history of minibuffer
+(savehist-mode)
+
+;; Make right-click do something sensible
+(when (display-graphic-p)
+  (context-menu-mode))
+
+;; Don't litter file system with *~ backup files; put them all inside
+;; ~/.emacs.d/backup or wherever
+(defun cs--backup-file-name (fpath)
+  "Return a new file path of a given file path.
+If the new path's directories does not exist, create them."
+  (let* ((backupRootDir "~/.config/emacs/emacs-backup/")
+         (filePath (replace-regexp-in-string "[A-Za-z]:" "" fpath )) ; remove Windows driver letter in path
+         (backupFilePath (replace-regexp-in-string "//" "/" (concat backupRootDir filePath "~") )))
+    (make-directory (file-name-directory backupFilePath) (file-name-directory backupFilePath))
+    backupFilePath))
+(setq make-backup-file-name-function 'cs--backup-file-name)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Set up package management
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Get the good stuff from MELPA.
+(require 'package)
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+
+;; Sync the repos.
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; Install and load use-package, if not done already.
+(unless (package-installed-p 'use-package)
+  (package-install use-package))
+
+(require 'use-package)
+
+;; Ensure that every package declared is installed correctly.
+(setq use-package-always-ensure t)
+
+;; Allows us to make sure external binaries are available to support a particular package.
+(use-package use-package-ensure-system-package)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Discovery aids
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Show the help buffer after startup
+(add-hook 'after-init-hook 'help-quick)
+
+;; which-key: shows a popup of available keybindings when typing a long key
+;; sequence (e.g. C-x ...)
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Interface enhancements/defaults
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Mode line information
+(setq line-number-mode t)                        ; Show current line in modeline
+(setq column-number-mode t)                      ; Show column as well
+
+(setq x-underline-at-descent-line nil)           ; Prettier underlines
+(setq switch-to-buffer-obey-display-actions t)   ; Make switching buffers more consistent
+
+(setq-default show-trailing-whitespace nil)      ; By default, don't underline trailing spaces
+(setq-default indicate-buffer-boundaries 'left)  ; Show buffer top and bottom in the margin
+
+;; Enable horizontal scrolling
+(setq mouse-wheel-tilt-scroll t)
+(setq mouse-wheel-flip-direction t)
+
+;; Use spaces, not tabs and set to 4 spaces per tabstop
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+
+;; Misc. UI tweaks
+(blink-cursor-mode -1)                                ; Steady cursor
+(pixel-scroll-precision-mode)                         ; Smooth scrolling
+
+;; Use common keystrokes by default
+;; (cua-mode)
+
+;; Display line numbers in programming mode
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(setq-default display-line-numbers-width 3)           ; Set a minimum width
+
+;; Nice line wrapping when working with text
+(add-hook 'text-mode-hook 'visual-line-mode)
+
+;; Modes to highlight the current line with
+(let ((hl-line-hooks '(text-mode-hook prog-mode-hook)))
+  (mapc (lambda (hook) (add-hook hook 'hl-line-mode)) hl-line-hooks))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Tab-bar configuration
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Show the tab-bar as soon as tab-bar functions are invoked
+(setq tab-bar-show 0)
+
+;; Add the time to the modeline, if visible
+(add-to-list 'tab-bar-format 'tab-bar-format-align-right 'append)
+(add-to-list 'tab-bar-format 'tab-bar-format-global 'append)
+(setq display-time-format "%a %F %T")
+(setq display-time-interval 1)
+(display-time-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Theme
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package emacs
+  :config
+  (load-theme 'modus-operandi))          ; for light theme, use modus-operandi
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   My tweaks
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Change from yes/no to y/n
+(setq use-short-answers t)
+;; Change exit to better y/n
+(setq confirm-kill-emacs #'y-or-n-p)
+
+;; Stop dired from keeping a buffer for each link/file
+(setq dired-kill-when-opening-new-dired-buffer t)
+
+;; Set calendar to y/m/d
+(setq calendar-date-style 'iso)
+;; Show trailing whitespace
+(setq show-trailing-whitespace t)
+
+;; Puts customization done via emacs into a separate file (vs. init.el)
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file))
+
+(require 'obsidian)
+(obsidian-specify-path "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Suncor")
+;; If you want a different directory of `obsidian-capture':
+(setq obsidian-inbox-directory "00 System/01 Inbox")
+
+;; Define obsidian-mode bindings
+(add-hook
+ 'obsidian-mode-hook
+ (lambda ()
+   ;; Replace standard command with Obsidian.el's in obsidian vault:
+   (local-set-key (kbd "C-c C-o") 'obsidian-follow-link-at-point)
+
+   ;; Use either `obsidian-insert-wikilink' or `obsidian-insert-link':
+   (local-set-key (kbd "C-c C-l") 'obsidian-insert-wikilink)
+
+   ;; Following backlinks
+   (local-set-key (kbd "C-c C-b") 'obsidian-backlink-jump)))
+
+;; Optionally you can also bind `obsidian-jump' and `obsidian-capture'
+;; replace "YOUR_BINDING" with the key of your choice:
+;;(global-set-key (kbd "YOUR_BINDING") 'obsidian-jump) 
+;;(global-set-key (kbd "YOUR_BINDING") 'obsidian-capture)
+
+;; Activate detection of Obsidian vault
+(global-obsidian-mode t)
+

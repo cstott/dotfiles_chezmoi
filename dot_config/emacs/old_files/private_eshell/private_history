@@ -1,0 +1,26 @@
+cd
+ls
+brew info pcre2
+brew info pango
+brew p11-kit
+brew info p11-kit
+brew info oniguruma
+brew info nettle
+build-error: 7 (30 days)
+brew info make
+brew info lua
+brew gnutls
+brew info gnutls
+brew info gnupg
+brew info coreutils
+brew info cheat
+brew info cairo
+echo $0
+echo Hello
+ls
+pwd
+ls
+la
+ls -a
+ls -alf
+exit

@@ -1,0 +1,134 @@
+- [[@RaihanK]] asked me to look setting up Kanban for team
+	- Wants to capture the entire portfolio
+	- Really wants the ability to move cards around easily
+	- How he stewarded initiatives at Imperial
+	- **Project name:** Analytics Portfolio
+- - Apply to this approach ![[CRISP-DM Details.png]]
+- Process (columns)
+	- Business Understanding
+		- Problem
+		- Business Alignment
+	- Data Understanding
+		- Process Understanding
+		- Data Availability
+	- Data Preparation
+		- Transformation
+	- Modeling
+		- EDA
+		- Modeling
+	- Evaluation
+		- Solved?
+		- Product go/no-go (Gate check)
+	- Deployment (move to Scrum)
+		- Pipelines / ETL
+		- DevOps
+		- MLOps
+	- Value Tracking
+- Pipeline Management (swimlanes)
+	- Active - # of Data Scientists x 3
+	- Pipeline - 1-2 x # of Active Opportunities
+	- Parked
+	- Declined / Failed
+- Thoughts
+	- Keep as light as possible (especially pre-Deployment)
+	- Ideally pull data from source (vs. manually managing board)
+	- Diagram likely would represent the Initiative level summary
+		- Stories/subtasks would be somewhere else?
+		- Only can associate one individual in each Epic/Story/etc.
+	- In approach above: 
+		- Columns represent steps/stages of work
+		- Swimlanes represent a state (usually represented by columns in Kanban)
+			- Active - is like WIP
+			- Pipeline - is like Backlog
+- Note sent to [[@RaihanK]]
+	- Hey Raihan,
+
+I did some investigation into Jira's capabilities for representing the Analytics Portfolio in a kanban style format so that it matches the framework you shared. Have a look and let me know if you have any questions or would like to discuss.
+
+**Note:** I reached out to another SM that was working with IEVC as he had logged some questions about the Jira. According to him Calvin Lac and Chad Anstey are the two admins for the Jira product. Unfortunately, they have both been moved to other groups and are supporting Jira on an emergency only basis. Calvin mentioned that DIT is looking for a new team to own Jira and most changes/tweaks/add-ons will need to wait until they are identified.
+
+I came up with a couple of options to address what you asked for. The analysis is based on previously using the options for other work. 
+
+1. **TeamRhythm add-on** - I mention this one because Suncor was actively using it until the recent layoffs.  It addresses a lot of the things we are trying to do (after we adjust some of the setup). 
+
+1. Notes
+
+1. Use Initiatives to represent the high-level process flow (allows us to group the into the process flow steps)
+2. Use Epics to represent the experiment/approach we are doing R+D on
+3. Use Stories to represent the high-level work needed for the specific Epic
+4. Use Sub-Tasks to represent the detailed work needed for the Stories
+
+- All Epics/experiments in the process flow would be assigned to an Initiative and then moved to another when start next step
+
+2. Pros 
+
+1. Supports Kanban style workflow (i.e., Drag and drop management of work)
+2. Most of team has probably used it if they worked with a SM
+
+- We can replicate the steps in the process flow (e.g., repurposing Initiatives)
+
+4. We can replicate the swimlanes by repurposing Versions. They wouldn't represent versions but buckets of work (i.e., Active, Pipeline, Parked, Declined).
+
+5. We could leverage Components to allow us to filter by business area (e.g., Oilsands work, Refinement work, Trading work, etc.)
+
+3. Cons
+
+1. Cost of using tool, ongoing licensing
+2. Still requires some manual maintenance but the drag and drop would make it easier
+3. All experiments would need to be in the same "project" to work
+
+5. Cost - assuming a team of 30 people accessing it would be $84 USD/month to use (what is on the website, might be cheaper)
+
+2. **Atlassian Jira out of the box** - The tool used by Atlassian to manage across multiple projects is their Advanced Roadmaps product. It is basically a fancy Gantt chart which will limit our ability to move activities easily (i.e., there is no drag and drop). 
+
+1. Notes
+
+1. Follows typical flow of work items (Epic -> Story -> Sub-Task)
+2. More date-based approach
+3. Probably makes sense to have each experiment be a project (i.e., more overhead)
+
+3. Pros
+
+1. No additional costs
+2. Easy to do bulk changes
+3. Can use queries to merge multiple projects into the same view
+
+5. Cons
+
+1. Timeline based visualization. Won't be able to view process flow.
+
+2. Gantt approach makes it hard to see the high-level flow of the experiments, etc.
+
+3. Can't drag and drop tasks, will require more manual management to reflect the framework
+4. Flow isn't intuitive. Would require a fair bit of management behind the scenes to keep accurate.
+5. Swimlanes are limited. We might be able to "hack" to replicate using queries.
+
+4. Cost - free functionality, does not include time to manage it
+
+- **Mural plugin for Jira** - (haven't used this one but there was a discussion about it a year ago) There is a plugin that allows you to pull in Jira items into Mural. This would be a quick and dirty approach. Each "stickie" should show the status of the task - we could probably modify this to represent the different swimlanes (i.e., Active, Pipeline, Parked, Declined). If new "stickies" are added to the mural we can export them back to Jira.
+
+1. Pros
+
+1. Easy to manage once loaded into Mural
+
+2. Team familiar with Mural tool
+
+3. Can export mural as a PDF or share link to distribute to others
+
+2. Cons
+
+1. Would require manual set up of Jira items pulled into Mural
+
+2. Manual moving of work across the process flow. Likely need to validate to make sure up to date.
+
+3. Awkward syncing of data. Stickies can be pulled in and new ones are generated. Would need to test the sync.
+
+3. Cost - ongoing cost for Mural plugin + Mural for team members using this
+
+I had access to the TeamRhythm add-on until the start of September otherwise I would be set up a project to test the above. I think it is the best of the three options. I'll need to validate how it (or other options) work once we have access. Fortunately, most of the add-ons have a 30-day free trial.
+
+Let me know what you think.
+
+Thanks,
+
+Chris

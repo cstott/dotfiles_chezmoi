@@ -1,0 +1,9 @@
+#+title:      Monday 27 November 2023
+#+date:       [2023-11-27 Mon 08:57]
+#+filetags:   :journal:
+#+identifier: 20231127T085724
+
+Thinking about this approach. It is much simpler but does it have the "interesting tweaks" to keep it interesting?
+Right now I'm storing files in org format. Is that the best? orgmode format has been around for quiet a while. There are probably ways to convert (pandoc?)
+
+* TODO Investigate converting orgmode files to markdown      :pkm:tech:emacs:

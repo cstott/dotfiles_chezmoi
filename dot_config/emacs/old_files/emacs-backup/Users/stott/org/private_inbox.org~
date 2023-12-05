@@ -1,0 +1,32 @@
+#+title: Inbox
+
+* Emacs Setup
+:PROPERTIES:
+:CATEGORY: emacs
+:END:
+
+** TODO Review [[https://d12frosted.io/posts/2020-06-23-task-management-with-roam-vol1.html][Org-roam series]] [/]                                 :PROJECT:
+*** DONE Read sectionm 1
+
+*Tasks* - simplest actionalable item with a *TODO* state
+*Project* - a *TODO* item with outcome requiring multiple steps
+*Meta Project* - long lasting project without a final outcome (i.e., an Area)
+*Resource* - a person, a tool, a location, etc. related to task
+
+C-c C-x p - add properties to a Meta Project
+
+*** IN PROGRESS Read section 2
+
+*** TODO Read section 3
+*** TODO Read Section 4
+*** TODO READ Section 5
+*** TODO Read Section 6
+*** TODO Read Section 7
+
+* Blog
+:PROPERTIES:
+:CATEGORY: blog
+:END:
+
+** TODO Check out [[https://gohugo.io/][Hugo]]
+** TODO Check out [[https://gethugothemes.com/][Hugo Themes]]

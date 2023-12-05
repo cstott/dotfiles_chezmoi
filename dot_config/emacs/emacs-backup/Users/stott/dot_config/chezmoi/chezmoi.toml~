@@ -1,0 +1,4 @@
+[edit]
+	command = "emacs"
+	args = ["--init-directory  ~/.config/emacs"]
+

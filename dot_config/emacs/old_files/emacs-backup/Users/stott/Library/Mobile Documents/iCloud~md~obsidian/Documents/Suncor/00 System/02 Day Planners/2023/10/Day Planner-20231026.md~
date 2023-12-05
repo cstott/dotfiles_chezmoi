@@ -1,0 +1,42 @@
+<< [[Day Planner-20231025]] | [[Day Planner-20231027]] >>
+
+### Schedule
+- [x] 08:00 Work Planning
+- [x] 08:30 Investigate adding [[@JohnK]] to safety projects
+- [x] 08:45 Review agile article
+- [x] 09:00 [[Rackforward Rogues Scrum|Rackforward Rogues: Scrum]]
+- [x] 10:00 - 10:30 [[2023-10-26 Suncor Bloomberg - Enterprise Data catchup]]
+- [x] 10:30 Follow up on Trading + Bloomberg next steps
+- [x] 11:30 - 11:45 [[Trading Advanced Analytics Scrum|Trading Advanced Analytics Daily Scrum]]
+- [x] 11:45 APT meeting
+- [x] 12:00 BREAK
+- [x] 12:30 Follow up on cloud cost codes for trading work
+- [x] 13:00 BREAK
+- [x] 13:30 Review intake process for tasks to trim
+- [x] 14:30 Chat with [[@MinhT]] and follow up on cloud cost codes
+- [x] 15:15 Chat with [[@RaihanK]] about financial processes 
+- [x] 15:30 Look at CRISP-DM documents
+- [x] 17:00 END
+
+### MIT
+- [x] Book re-planning meeting for APT next week
+
+### Tasks
+- [x] Provide info on using Jira to [[@DerekL]]
+
+### Notes
+- [[Scrum Master vs Agile Coach]]
+- Time entry for employs
+	- Are supposed to use codes provided. Talked to Raihan and he's working on refining the process so hold off for now.
+	- ![[Employee Cost Tracking Codes.png]]
+	- Business needs to figure out how to sustain in future (we can provide estimates based on cloud costs, labour depends on management)
+	- Minh hasn't been given any direction other than shutting down specific (existing) AFEs
+	- Do we need to look at existing cloud costs for products
+		- Trading project
+		- Retail project
+		- No - Raihan is going to handle this
+	- How do we want to let the business know they should be paying for?
+		- We will cover cloud costs for items in yellow (in list)
+		- Richard/Raihan/Mona made continue/stop decisions
+	- ![[2023-10-25 Go No Go decision.png]]
+- [[2023-10 Project Status]]
