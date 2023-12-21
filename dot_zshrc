@@ -75,3 +75,7 @@ source /Users/stott/.config/op/plugins.sh
 
 # Set up tool to manage history
 eval "$(mcfly init zsh)"
+
+# Set up eza
+export FPATH="/opt/homebrew/bin/eza/completions/zsh:$FPATH"
+
