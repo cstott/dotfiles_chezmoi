@@ -43,11 +43,11 @@ setopt CORRECT
 setopt CORRECT_ALL
 
 # Aliases
-alias ls='/opt/homebrew/bin/lsd -Gh'
-alias la='/opt/homebrew/bin/lsd -Ga'
-alias ll='/opt/homebrew/bin/lsd -alFG'
-alias lst='/opt/homebrew/bin/lsd -la -t'
-alias lsd='/opt/homebrew/bin/lsd -Gh -d */'
+alias ls='/opt/homebrew/bin/eza -Gh'
+alias la='/opt/homebrew/bin/ezz -Ga'
+alias ll='/opt/homebrew/bin/eza -alFG'
+alias lst='/opt/homebrew/bin/eza -la -t'
+alias lsd='/opt/homebrew/bin/eza -Gh -d */'
 alias ps='ps -a'
 
 alias -g reload='source ~/.zshrc'
@@ -76,5 +76,6 @@ source /Users/stott/.config/op/plugins.sh
 # Set up tool to manage history
 eval "$(mcfly init zsh)"
 
-# Set up easy management of config files - see https://www.atlassian.com/git/tutorials/dotfiles
-alias myconfig='/usr/bin/git --git-dir=/Users/stott/.myconfig/ --work-tree=/Users/stott'
+# Set up eza
+export FPATH="/opt/homebrew/bin/eza/completions/zsh:$FPATH"
+
