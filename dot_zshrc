@@ -46,7 +46,7 @@ setopt CORRECT_ALL
 alias ls='/opt/homebrew/bin/eza -Gh'
 alias la='/opt/homebrew/bin/eza -Ga'
 alias ll='/opt/homebrew/bin/eza -alFG'
-alias lst='/opt/homebrew/bin/eza -Gh -la'
+alias lst='/opt/homebrew/bin/eza -Gh -laT'
 alias lsd='/opt/homebrew/bin/eza -Gh -d */'
 alias ps='ps -a'
 
