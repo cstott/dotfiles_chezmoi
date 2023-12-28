@@ -43,11 +43,11 @@ setopt CORRECT
 setopt CORRECT_ALL
 
 # Aliases
-alias ls='/opt/homebrew/bin/eza -Gh'
-alias la='/opt/homebrew/bin/eza -Ga'
-alias ll='/opt/homebrew/bin/eza -alFG'
-alias lst='/opt/homebrew/bin/eza -Gh -laT'
-alias lsd='/opt/homebrew/bin/eza -Gh -d */'
+alias ls='/opt/homebrew/bin/eza -Gh --no-quotes'
+alias la='/opt/homebrew/bin/eza -Ga --no-quotes'
+alias ll='/opt/homebrew/bin/eza -alFG --no-quotes --color-scale age'
+alias lst='/opt/homebrew/bin/eza -Gh -laT --no-quotes --color-scale age'
+alias lsd='/opt/homebrew/bin/eza -Gh -d */ --no-quotes'
 alias ps='ps -a'
 
 alias -g reload='source ~/.zshrc'
