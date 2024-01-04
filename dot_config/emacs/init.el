@@ -98,9 +98,6 @@ If the new path's directories does not exist, create them."
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; Create log for tracking commands
-(use-package command-log-mode)
-
 ;; which-key: shows a popup of available keybindings when typing a long key
 ;; sequence (e.g. C-x ...)
 (use-package which-key
