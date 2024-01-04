@@ -1,4 +1,12 @@
 ;;
+;; OS Specific Tweaks
+;;
+
+;; Turn off warning message about feature not supported by ls
+(when (string= system-type "darwin")       
+  (setq dired-use-ls-dired nil))
+
+;;
 ;; General Look and feel
 ;;
 
@@ -77,8 +85,8 @@ If the new path's directories does not exist, create them."
 (require 'package)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-			 ("org" . "https://orgmode.org/elpa/")
-			 ("elpa" . "https://elpa.gnu.org/packages/")))
+			 ("gnu" . "https://elpa.gnu.org/packages/")
+			 ("org" . "https://orgmode.org/elpa/")))
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
@@ -459,7 +467,7 @@ If the new path's directories does not exist, create them."
 
 ;; Bind howm-from-calendar to "d" key.
 (add-hook 'initial-calendar-window-hook
-          '(lambda ()
+          #'(lambda ()
              (local-set-key
               "d" 'howm-from-calendar)))
 
@@ -467,7 +475,7 @@ If the new path's directories does not exist, create them."
 
 ;; Type "d" in howm menu to open calendar.
 (add-hook 'howm-menu-hook
-          '(lambda ()
+          #'(lambda ()
              (local-set-key "d" 'calendar)))
 
 
@@ -476,8 +484,7 @@ If the new path's directories does not exist, create them."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(orgalist 2048-game chezmoi which-key doom-modeline denote-menu counsel command-log-mode)))
+ '(package-selected-packages '(orgalist chezmoi which-key denote-menu counsel)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
