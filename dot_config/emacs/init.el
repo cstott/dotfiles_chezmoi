@@ -22,6 +22,8 @@
 
 ;; Show the tab-bar as soon as tab-bar functions are invoked
 (setq tab-bar-show 0)
+;; Show the column in tab-bar
+(setq column-number-mode t)
 
 ;; Default frame configuration: full screen, good-looking title bar on macOS
 (setq frame-resize-pixelwise t)
