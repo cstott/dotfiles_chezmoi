@@ -49,6 +49,10 @@ alias ll='/opt/homebrew/bin/eza -alFG --no-quotes --color-scale age'
 alias lst='/opt/homebrew/bin/eza -Gh -laT --no-quotes --color-scale age'
 alias lsd='/opt/homebrew/bin/eza -Gh -d */ --no-quotes'
 alias ps='ps -a'
+# Improved Top
+alias top='/opt/homebrew/bin/bpytop'
+# Stop using colorless pager
+alias more='/opt/homebrew/bin/bat'
 
 alias -g reload='source ~/.zshrc'
 alias -g grep='grep -i --color'
