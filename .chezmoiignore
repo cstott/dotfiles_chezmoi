@@ -8,7 +8,7 @@
 ~/.config/emacs/emacs-backup/
 
 # Raycast
-~/.config/raycast/extensions/
+~/.config/raycast/extensions/**
 
 # Neovim
 **/autoload/
