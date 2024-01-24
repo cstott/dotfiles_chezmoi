@@ -3,7 +3,7 @@
 ;;
 
 ;; Turn off warning message about feature not supported by ls
-(when (string= system-type "darwin")       
+(when (string= system-type "darwin")
   (setq dired-use-ls-dired nil))
 
 ;;
@@ -29,6 +29,7 @@
 (setq frame-resize-pixelwise t)
 (tool-bar-mode -1)                      ; All these tools are in the menu-bar anyway
 (setq default-frame-alist '((fullscreen . maximized)))
+(select-frame-set-input-focus (selected-frame))
 
 ;; Add the time to the modeline, if visible
 (add-to-list 'tab-bar-format 'tab-bar-format-align-right 'append)
@@ -58,7 +59,7 @@
 
 ;;
 ;; Tweaks interactions
-;; 
+;;
 
 ;; Don't litter file system with *~ backup files; put them all inside
 ;; ~/.emacs.d/backup or wherever
@@ -126,7 +127,7 @@ If the new path's directories does not exist, create them."
   :config
   (ivy-mode 1))
 
-;; Add Counsel to use 
+;; Add Counsel to use
 (use-package counsel)
 
 (use-package doom-modeline
@@ -470,8 +471,6 @@ If the new path's directories does not exist, create them."
              (local-set-key
               "d" 'howm-from-calendar)))
 
- 	
-
 ;; Type "d" in howm menu to open calendar.
 (add-hook 'howm-menu-hook
           #'(lambda ()
@@ -483,7 +482,7 @@ If the new path's directories does not exist, create them."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(orgalist chezmoi which-key denote-menu counsel)))
+ '(package-selected-packages '(wwg orgalist chezmoi which-key denote-menu counsel)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
