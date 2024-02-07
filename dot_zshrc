@@ -45,7 +45,7 @@ setopt CORRECT_ALL
 # Aliases
 alias ls='/opt/homebrew/bin/eza -Gh --no-quotes'
 alias la='/opt/homebrew/bin/eza -GXa --no-quotes'
-alias ll='/opt/homebrew/bin/eza -alFX --header --no-quotes --color-scale age'
+alias ll='/opt/homebrew/bin/eza -alX --header --no-quotes --color-scale age'
 alias lst='/opt/homebrew/bin/eza -Gh -laT --no-quotes --color-scale age'
 alias lsd='/opt/homebrew/bin/eza -Gh -d */ --no-quotes'
 alias ps='ps -a'
